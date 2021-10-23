@@ -26,4 +26,3 @@ Allergy Child is back at it again. She is bored at home and wants to go over to 
 life bar represented by attributes on the 
 this.healthPoints = 100
 detectHit(thing) if it happens, deduct or add points etc.
-# allergy-child
