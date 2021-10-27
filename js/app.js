@@ -9,7 +9,6 @@
 //AC gains a life back if they retrieve an inhaler or nebulizer
 //once AC gets to the friends house, you win the game
 
-
 //one class for allergy girl, the good items, the bad items, and the win condition
 //life bar represented by attributes on the 
 //this.healthPoints = 100
@@ -58,13 +57,6 @@ console.log('this is the friends house', friendshouse)
 // add new crawlers for cats? with some sort of function that pushes them to move at random times?
 
 
-// function add_img() {
-//     const img = document.createElement('img');
-//     img.src = 'https://www.pngitem.com/pimgs/m/149-1499086_transparent-flying-cat-png-flying-cat-no-background.png';
-//     document.getElementById('body').appendChild(img);
-// }
-
-
 let catsbrown = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'brown', 15, 15)
 let catsorange = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'orange', 15, 15)
 let catsblack = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'black', 15, 15)
@@ -74,30 +66,7 @@ let catsblack = new Crawler(Math.floor(Math.random() * game.width), Math.floor(M
 
 
 
-// let cats = new spawnObjects('brown', 15, 15)
-// console.log(cats)
-// function spawnObjects(color, width, height) {
-//     x = Math.floor(Math.random() * game.width)
-//     y = Math.floor(Math.random() * game.height)
-//     this.color = color
-//     this.width = width
-//     this.height = height
-    
-//     this.render = function () {
-//         ctx.fillStyle = this.color
-//         ctx.fillRect(x, y, this.width, this.height)
-//     }
-// }
 
-
-
-// function move() {
-//     const querySelector(cats);
-
-// }
-// setInterval() => {
-//     //want the object to move around here?
-// }
 
 // Here we're going to set up our movement handler
 // the movementhandler will be an event listener
@@ -145,14 +114,35 @@ const detectHit = () => {
         player.y < friendshouse.y + friendshouse.height &&
         player.y + player.height > friendshouse.y
     ) {
-        // reach friend's house
-        // return friendshouse.reached = true
         friendshouse.reached = true
-        // this is not quite where we want to stop our loop
-        // stopGameLoop()
         document.querySelector('#bottom-right > h2').innerText = 'You Win!'
+    } else if (
+        player.x < catsbrown.x + catsbrown.width &&
+        player.x + player.width > catsbrown.x &&
+        player.y < catsbrown.y + catsbrown.height &&
+        player.y + player.height > catsbrown.y
+    ) {
+        catsbrown.reached = true
+        document.querySelector('#bottom-right > h2').innerText = 'You lose a life!'
+    } else if (
+        player.x < catsorange.x + catsorange.width &&
+        player.x + player.width > catsorange.x &&
+        player.y < catsorange.y + catsorange.height &&
+        player.y + player.height > catsorange.y
+    ) {
+        catsorange.reached = true
+        document.querySelector('#bottom-right > h2').innerText = 'You lose a life!'
+    } else if (
+        player.x < catsblack.x + catsblack.width &&
+        player.x + player.width > catsblack.x &&
+        player.y < catsblack.y + catsblack.height &&
+        player.y + player.height > catsblack.y
+    ) {
+        catsblack.reached = true
+        document.querySelector('#bottom-right > h2').innerText = 'You lose a life!'
     }
 }
+
 
 let stopGameLoop = () => {clearInterval(gameInterval)}
 // we're going to set up our game loop, to be used in our timing function
@@ -165,16 +155,15 @@ const gameLoop = () => {
     moveDisplay.innerText = `X: ${player.x}\nY: ${player.y}`
     // check if the endingPoint has been reached, if not, render the endingPoint
     friendshouse.render()
-    // cats.render(
-    //     // function image (){
-    //     //     img.src = 'https://www.pngitem.com/pimgs/m/149-1499086_transparent-flying-cat-png-flying-cat-no-background.png';
-    //     //     document.body.appendChild(img);
-    //     // }
-    // )
+    player.render()
     catsbrown.render()
     catsorange.render()
     catsblack.render()
-    player.render()
+    // console.log('hi tom')
+    catsbrown.x += 3
+    // catsbrown.x -= 10
+    catsorange.x -= 5
+    catsblack.y += 5
     detectHit()
     if (friendshouse.reached) {
         stopGameLoop()
@@ -218,7 +207,30 @@ let gameInterval = setInterval(gameLoop, 70)
 
 
 
+// let cats = new spawnObjects('brown', 15, 15)
+// console.log(cats)
+// function spawnObjects(color, width, height) {
+//     x = Math.floor(Math.random() * game.width)
+//     y = Math.floor(Math.random() * game.height)
+//     this.color = color
+//     this.width = width
+//     this.height = height
+    
+//     this.render = function () {
+//         ctx.fillStyle = this.color
+//         ctx.fillRect(x, y, this.width, this.height)
+//     }
+// }
 
+
+
+// function move() {
+//     const querySelector(cats);
+
+// }
+// setInterval() => {
+//     //want the object to move around here?
+// }
 
 
 
@@ -413,5 +425,3 @@ let gameInterval = setInterval(gameLoop, 70)
 //   });
   
 //   ball.draw();
-
-//////////////////////////////////////////////////////////////////////////////////////////////
