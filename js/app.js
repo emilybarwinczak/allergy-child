@@ -31,7 +31,14 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 const ctx = game.getContext('2d')
 
 
+///commenting out below FOR NOW only
+
 window.alert("Welcome to Allergy Child! To play, you can use the following keys: W = Up S = Down A = Left D = Right")
+
+
+
+
+
 // function start () {
 //     ctx.font = '50px serif';
 //     ctx.fillText('Hit the space bar to begin!', 150, 150);
@@ -64,20 +71,32 @@ function Crawler(x, y, color, width, height) {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
+let catX = 0
+function setX () {
+    catX = Math.floor(Math.random() * game.width)
+    console.log(catX)
+    return catX
+}
+
+function catsbrownMoveX () {
+    // catsbrown.x += 4
+    if (catsbrown.x < 1087){
+        catsbrown.x += 4
+        console.log('brown cat')
+    } else {
+        catsbrown.x -= 4
+        console.log('other cat')
+    }
+} 
+
 
 let player = new Crawler(50, 630, 'white', 18, 18)
-let friendshouse = new Crawler(750, 150, 'white', 48, 32)
+let friendshouse = new Crawler(1005, 55, 'white', 48, 48)
 
-// add new crawlers for cats? with some sort of function that pushes them to move at random times?
-
-
-let catsbrown = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'brown', 15, 15)
+let catsbrown = new Crawler (setX(), Math.floor(Math.random() * game.height), 'brown', 15, 15)
 let catsorange = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'orange', 15, 15)
 let catsblack = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'black', 15, 15)
 //can i simplify this into an array? and make them all move randomly as well?
-
-
-
 
 
 
@@ -155,16 +174,23 @@ const detectHit = () => {
     ) {
         catsblack.reached = true
         document.querySelector('#bottom-right > h2').innerText = 'You lose a life!'
+    // } else if (
+    //     game.x < catsbrown.x + catsbrown.width &&
+    //     game.x + game.width > catsbrown.x &&
+    //     game.y < catsbrown.y + catsbrown.height &&
+    //     game.y + game.height > catsbrown.y
+    // ) {
+    //     game.reached = true
     }
 }
 
 //make the cats turn around when they hit the edge of the board
 //no idea what i'm doing here 
-const turnAround = () => {
-    if (
-        catsbrown.x = game
-    ) catsbrown.x -= 4
-}
+// const turnAround = () => {
+//     if (
+//         catsbrown.x = game
+//     ) catsbrown.x -= 4
+// }
 
 // if (true) {
 //     catsbrown.x = game.width
@@ -185,11 +211,14 @@ const gameLoop = () => {
     // check if the endingPoint has been reached, if not, render the endingPoint
     friendshouse.render()
     player.render()
+    // setX()
     catsbrown.render()
     catsorange.render()
     catsblack.render()
-    catsbrown.x += 4
+    catsbrownMoveX()
+    // catsbrown.x += 4
     // catsbrown.x -= 10
+    // catsbrown.x = game.width - catsbrown.height
     catsorange.x -= 4
     catsblack.y += 4
     detectHit()
