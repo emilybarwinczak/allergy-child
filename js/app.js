@@ -30,6 +30,22 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 // we do this with the built in canvas method, getContext
 const ctx = game.getContext('2d')
 
+
+window.alert("Welcome to Allergy Child! To play, you can use the following keys: W = Up S = Down A = Left D = Right")
+// function start () {
+//     ctx.font = '50px serif';
+//     ctx.fillText('Hit the space bar to begin!', 150, 150);
+//     // ctx.textAlign = center;
+//     const startGame ('keydown', (event) => {
+//         ctx.game.addEventListener
+//         if (event.keyCode == '32 ') {
+//             console.log("Spacebar Pressed")}
+//         })
+//         startGame();
+// // }
+// document.querySelector(startGame).onclick = startGame;
+
+
 // we're going to follow some sorta basic Object Oriented Programming 'rules' to build an interactive game
 // we'll create objects for our player and our obstacles
 // we'll give them their own 'draw' methods to place them on the canvas
@@ -51,8 +67,6 @@ function Crawler(x, y, color, width, height) {
 
 let player = new Crawler(50, 630, 'white', 18, 18)
 let friendshouse = new Crawler(750, 150, 'white', 48, 32)
-console.log('this is the player', player)
-console.log('this is the friends house', friendshouse)
 
 // add new crawlers for cats? with some sort of function that pushes them to move at random times?
 
@@ -71,7 +85,6 @@ let catsblack = new Crawler(Math.floor(Math.random() * game.width), Math.floor(M
 // Here we're going to set up our movement handler
 // the movementhandler will be an event listener
 // we'll use the WASD keys to move the player around the canvas
-// we're going to use switch case here, but you can also use if...else, the two in this case are interchangeable
 let movementHandler = (e) => {
     switch(e.key.toLowerCase()) {
         case ('w'):
@@ -104,6 +117,8 @@ let movementHandler = (e) => {
             break
     }
 }
+
+
 // make collision detection
 // write logic that determines if any part of our player touches any part of the ending point
 const detectHit = () => {
@@ -143,6 +158,20 @@ const detectHit = () => {
     }
 }
 
+//make the cats turn around when they hit the edge of the board
+//no idea what i'm doing here 
+const turnAround = () => {
+    if (
+        catsbrown.x = game
+    ) catsbrown.x -= 4
+}
+
+// if (true) {
+//     catsbrown.x = game.width
+// }
+// let catsbrown.x -= 4
+
+
 
 let stopGameLoop = () => {clearInterval(gameInterval)}
 // we're going to set up our game loop, to be used in our timing function
@@ -159,11 +188,10 @@ const gameLoop = () => {
     catsbrown.render()
     catsorange.render()
     catsblack.render()
-    // console.log('hi tom')
-    catsbrown.x += 3
+    catsbrown.x += 4
     // catsbrown.x -= 10
-    catsorange.x -= 5
-    catsblack.y += 5
+    catsorange.x -= 4
+    catsblack.y += 4
     detectHit()
     if (friendshouse.reached) {
         stopGameLoop()
@@ -171,6 +199,7 @@ const gameLoop = () => {
         console.log('You win!')
     }
 }
+
 
 // we also need to declare a function that will stop our animation loop
 

@@ -64,6 +64,9 @@ canvas {
         /* justify-content: center; */
       }
       
+      button {
+
+      }
       
       #bottom-left {
         grid-area: bottom-left;
