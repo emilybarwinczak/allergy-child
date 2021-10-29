@@ -3,6 +3,8 @@
 
 Allergy Child is back at it again. She is bored at home and wants to go over to her friend Lauren's house. The only problem is...she is allergic to everything! Okay, not everything, but a lot of things! The goal here is to safely get Ellie (Allergy Child) to her friend's house. Some of her mortal enemies include: CATS, CATS, and more CATS! Also, Amoxicillin, dogs, and nuts, but those things aren't super important today, as this neighborhood is specifically infested with cats. Try to avoid her enemies (cats) while directing her to her friend's house. If you run into an enemy along the way, you will lose some of your health (an inhaler). Try to get Ellie to her friend's house alive, that way they are no longer bored!!
 
+https://emilybarwinczak.github.io/allergy-child/
+
 ![Screen Shot 2021-10-22 at 2 50 35 PM](https://user-images.githubusercontent.com/92114356/138508817-0cf81ad8-e7c5-4355-94b8-de49c34a1473.png)
 
 ### MVP
