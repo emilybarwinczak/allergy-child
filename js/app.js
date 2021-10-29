@@ -40,32 +40,13 @@ console.log('this should be an inhaler', inhalers)
 
 let catDirection = true 
 
-// const playerImg = new Image()
-// playerImg.src = ('../allergy-child/js/flyingcat.png')
-// catsbrownImg.src = (img src = "https://png.pngitem.com/pimgs/s/236-2362990_-hd-png-download.png")
 
-
-
-function Crawler(x, y, color, width, height) {
-    this.x = x
-    this.y = y
-    this.color = color
-    this.width = width
-    this.height = height
-    this.reached = false
-    // then we declare the same type of render method
-    this.render = function () {
-        ctx.fillStyle = this.color
-        ctx.fillRect(this.x, this.y, this.width, this.height)
-    }
-}
 // let catX = 0
 // function setX () {
 //     catX = Math.floor(Math.random() * game.width)
 //     console.log(catX)
 //     return catX
 // }
-
 
 function catsbrownDirectionX () {
     } 
@@ -78,10 +59,10 @@ function catbrownMoveX () {
     }
     // console.log('Cat Direction' + catDirection)
     if (catDirection === true){
-        catsbrown.x += 7
+        catsbrown.x += 8
         // console.log('+')
     } else {
-        catsbrown.x -= 7
+        catsbrown.x -= 8
         // console.log('-')
     }
 }
@@ -98,10 +79,10 @@ function catorangeMoveX () {
     }
     // console.log('Cat Direction' + catDirection)
     if (catDirection === true){
-        catsorange.x += 5
+        catsorange.x += 7
         // console.log('+')
     } else {
-        catsorange.x -= 5
+        catsorange.x -= 7
         // console.log('-')
     }
 }
@@ -126,13 +107,46 @@ function catblackMoveY () {
     }
 }
 
-let player = new Crawler(50, 630, 'white', 18, 18)
-let friendshouse = new Crawler(1005, 55, 'white', 48, 48)
+const crazyImg = new Image()
+crazyImg.src = ('https://i.imgur.com/47ArcEv.png')
+
+const flyingImg = new Image()
+flyingImg.src = ('https://i.imgur.com/9sPV5ma.png')
+
+const sittingImg = new Image()
+sittingImg.src = ('https://i.imgur.com/QHmkIki.png')
+
+const ellieImg = new Image()
+ellieImg.src = ('https://i.imgur.com/ZhVva00.png')
+
+const houseImg = new Image()
+houseImg.src = ('https://i.imgur.com/NROwISk.jpg')
+
+function Crawler(url, x, y, width, height) {
+    this.url = url
+    this.x = x
+    this.y = y
+    this.width = width
+    this.height = height
+    this.reached = false
+    // then we declare the same type of render method
+    this.render = function () {
+        ctx.drawImage(this.url, this.x, this.y, this.width, this.height)
+    }
+}
+
+let catsbrown = new Crawler (crazyImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 90, 100)
+let catsorange = new Crawler (flyingImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 100, 100)
+let catsblack = new Crawler (sittingImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 100, 100)
+
+
+let player = new Crawler (ellieImg, 0, 580, 100, 100)
+let friendshouse = new Crawler(houseImg, 1005, 0, 140, 105)
 
 // let catsbrown = new Crawler (setX(), Math.floor(Math.random() * game.height), 'brown', 15, 15)
-let catsbrown = new Crawler (Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'brown', 15, 15)
-let catsorange = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'orange', 15, 15)
-let catsblack = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'black', 15, 15)
+// let catsbrown = new Crawler (Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'brown', 15, 15)
+// let catsorange = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'orange', 15, 15)
+// let catsblack = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'black', 15, 15)
 
 
 
@@ -189,6 +203,7 @@ function removeInhaler () {
     //     inhalers[counter].style.display = "none"
     // // }
     // console.log(counter)
+
     //loop over inhalers
     //check style.display of each inhaler
     //print display style
@@ -229,7 +244,7 @@ const detectHit = () => {
         catsorange.reached = true
         removeInhaler()
         document.querySelector('#bottom-right > h2').innerText = 'You lose a life!'
-    } else if (
+        } else if (
         player.x < catsblack.x + catsblack.width &&
         player.x + player.width > catsblack.x &&
         player.y < catsblack.y + catsblack.height &&
@@ -264,9 +279,6 @@ const gameLoop = () => {
     catbrownMoveX()
     catorangeMoveX()
     catblackMoveY()
-    // catsbrown.x += 4
-    // catsorange.x -= 4
-    // catsblack.y += 4
     detectHit()
     if (friendshouse.reached) {
         stopGameLoop()
@@ -528,4 +540,4 @@ let gameInterval = setInterval(gameLoop, 70)
 //     raf = window.requestAnimationFrame(drawf);
 //   });
   
-//   ball.draw();
+//   ball.draw()
