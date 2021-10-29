@@ -11,10 +11,8 @@ body {
     background-repeat: space;
 }
 
-h1, h2 {
-    /* font-family: ; */
+h2 {
     color: rgba(0, 0, 0, 0.704);
-
 }
 
 canvas {
@@ -43,7 +41,7 @@ canvas {
                           "game game game"
                           "bottom-left bottom-right bottom-right";
     }
-    
+
     #top-left, #top-right, #bottom-left, #bottom-right {
       display: flex;
       justify-content: center;
@@ -58,26 +56,17 @@ canvas {
       #top-right {
         grid-area: top-right;
         background-color: white;
-        /* width:300;
-        height: 100; */
-        /* background-image: url('../img/funky-lines.png'); */
       }
       
       main {
         grid-area: game;
-        /* justify-content: center; */
       }
       
-      button {
-
-      }
       
       #bottom-left {
         grid-area: bottom-left;
-        /* background-color: #222; */
       }
       
       #bottom-right {
         grid-area: bottom-right;
-        /* background-color: #222; */
       }

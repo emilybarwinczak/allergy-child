@@ -50,7 +50,6 @@ let catDirection = true
 
 function catsbrownDirectionX () {
     } 
-
 function catbrownMoveX () {
     if (catsbrown.x > 1087){
         catDirection = false
@@ -70,7 +69,6 @@ function catbrownMoveX () {
 
 function catsorangeDirectionX () {
     } 
-
 function catorangeMoveX () {
     if (catsorange.x > 1087){
         catDirection = false
@@ -90,7 +88,6 @@ function catorangeMoveX () {
 
 function catsblackDirectionY () {
 } 
-
 function catblackMoveY () {
     if (catsblack.y > 662){
         catDirection = false
@@ -122,6 +119,7 @@ ellieImg.src = ('https://i.imgur.com/ZhVva00.png')
 const houseImg = new Image()
 houseImg.src = ('https://i.imgur.com/NROwISk.jpg')
 
+
 function Crawler(url, x, y, width, height) {
     this.url = url
     this.x = x
@@ -129,7 +127,6 @@ function Crawler(url, x, y, width, height) {
     this.width = width
     this.height = height
     this.reached = false
-    // then we declare the same type of render method
     this.render = function () {
         ctx.drawImage(this.url, this.x, this.y, this.width, this.height)
     }
@@ -138,7 +135,6 @@ function Crawler(url, x, y, width, height) {
 let catsbrown = new Crawler (crazyImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 90, 100)
 let catsorange = new Crawler (flyingImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 100, 100)
 let catsblack = new Crawler (sittingImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 100, 100)
-
 
 let player = new Crawler (ellieImg, 0, 580, 100, 100)
 let friendshouse = new Crawler(houseImg, 1005, 0, 140, 105)
@@ -286,9 +282,6 @@ const gameLoop = () => {
         console.log('You win!')
     }
 }
-
-
-// we also need to declare a function that will stop our animation loop
 
 // add event listener for player movement
 document.addEventListener('keydown', movementHandler)
