@@ -30,34 +30,22 @@ game.setAttribute('height', getComputedStyle(game)['height'])
 // we do this with the built in canvas method, getContext
 const ctx = game.getContext('2d')
 
-
+const inhalers = document.querySelectorAll(".inhaler")
+console.log('this should be an inhaler', inhalers)
 ///commenting out below FOR NOW only
 
-window.alert("Welcome to Allergy Child! To play, you can use the following keys: W = Up S = Down A = Left D = Right")
+// window.alert("Welcome to Allergy Child! To play, you can use the following keys: W = Up S = Down A = Left D = Right")
 
 
 
+let catDirection = true 
+
+// const playerImg = new Image()
+// playerImg.src = ('../allergy-child/js/flyingcat.png')
+// catsbrownImg.src = (img src = "https://png.pngitem.com/pimgs/s/236-2362990_-hd-png-download.png")
 
 
-// function start () {
-//     ctx.font = '50px serif';
-//     ctx.fillText('Hit the space bar to begin!', 150, 150);
-//     // ctx.textAlign = center;
-//     const startGame ('keydown', (event) => {
-//         ctx.game.addEventListener
-//         if (event.keyCode == '32 ') {
-//             console.log("Spacebar Pressed")}
-//         })
-//         startGame();
-// // }
-// document.querySelector(startGame).onclick = startGame;
 
-
-// we're going to follow some sorta basic Object Oriented Programming 'rules' to build an interactive game
-// we'll create objects for our player and our obstacles
-// we'll give them their own 'draw' methods to place them on the canvas
-
-//create a class to build an object
 function Crawler(x, y, color, width, height) {
     this.x = x
     this.y = y
@@ -71,39 +59,83 @@ function Crawler(x, y, color, width, height) {
         ctx.fillRect(this.x, this.y, this.width, this.height)
     }
 }
-let catX = 0
-function setX () {
-    catX = Math.floor(Math.random() * game.width)
-    console.log(catX)
-    return catX
+// let catX = 0
+// function setX () {
+//     catX = Math.floor(Math.random() * game.width)
+//     console.log(catX)
+//     return catX
+// }
+
+
+function catsbrownDirectionX () {
+    } 
+
+function catbrownMoveX () {
+    if (catsbrown.x > 1087){
+        catDirection = false
+    } else if (catsbrown.x < 0) {
+        catDirection = true
+    }
+    // console.log('Cat Direction' + catDirection)
+    if (catDirection === true){
+        catsbrown.x += 7
+        // console.log('+')
+    } else {
+        catsbrown.x -= 7
+        // console.log('-')
+    }
 }
 
-function catsbrownMoveX () {
-    // catsbrown.x += 4
-    if (catsbrown.x < 1087){
-        catsbrown.x += 4
-        console.log('brown cat')
-    } else {
-        catsbrown.x -= 4
-        console.log('other cat')
+
+function catsorangeDirectionX () {
+    } 
+
+function catorangeMoveX () {
+    if (catsorange.x > 1087){
+        catDirection = false
+    } else if (catsorange.x < 0) {
+        catDirection = true
     }
+    // console.log('Cat Direction' + catDirection)
+    if (catDirection === true){
+        catsorange.x += 5
+        // console.log('+')
+    } else {
+        catsorange.x -= 5
+        // console.log('-')
+    }
+}
+
+
+function catsblackDirectionY () {
 } 
 
+function catblackMoveY () {
+    if (catsblack.y > 662){
+        catDirection = false
+    } else if (catsblack.y < 0) {
+        catDirection = true
+    }
+    // console.log('Cat Direction' + catDirection)
+    if (catDirection === true){
+        catsblack.y += 7
+        // console.log('+')
+    } else {
+        catsblack.y -= 7
+        // console.log('-')
+    }
+}
 
 let player = new Crawler(50, 630, 'white', 18, 18)
 let friendshouse = new Crawler(1005, 55, 'white', 48, 48)
 
-let catsbrown = new Crawler (setX(), Math.floor(Math.random() * game.height), 'brown', 15, 15)
+// let catsbrown = new Crawler (setX(), Math.floor(Math.random() * game.height), 'brown', 15, 15)
+let catsbrown = new Crawler (Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'brown', 15, 15)
 let catsorange = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'orange', 15, 15)
 let catsblack = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'black', 15, 15)
-//can i simplify this into an array? and make them all move randomly as well?
 
 
 
-
-// Here we're going to set up our movement handler
-// the movementhandler will be an event listener
-// we'll use the WASD keys to move the player around the canvas
 let movementHandler = (e) => {
     switch(e.key.toLowerCase()) {
         case ('w'):
@@ -137,6 +169,35 @@ let movementHandler = (e) => {
     }
 }
 
+// let counter = 2
+function removeInhaler () {
+    for (let i = 0; i < 3; i++) {
+        
+        if(inhalers[i].style.display = "none"){
+            break;
+        }
+        else {
+            inhalers[i].style.display = "none"
+        }
+    }    
+        
+    //     function removeInhaler () {
+    //     // console.log(inhalers)
+    // for (let i = 0; i < inhalers.length; i++) {
+    //     inhalers[i].style.display = "none"
+    // if (counter !== counter+1) {
+    //     inhalers[counter].style.display = "none"
+    // // }
+    // console.log(counter)
+    //loop over inhalers
+    //check style.display of each inhaler
+    //print display style
+    //write some logic around that display style
+    //if the display style is "none", do nothing
+    //if the display style is "", change one of them to none
+    //if all the display styles are "none", allergy child is dead
+
+}
 
 // make collision detection
 // write logic that determines if any part of our player touches any part of the ending point
@@ -157,6 +218,7 @@ const detectHit = () => {
         player.y + player.height > catsbrown.y
     ) {
         catsbrown.reached = true
+        removeInhaler()
         document.querySelector('#bottom-right > h2').innerText = 'You lose a life!'
     } else if (
         player.x < catsorange.x + catsorange.width &&
@@ -165,6 +227,7 @@ const detectHit = () => {
         player.y + player.height > catsorange.y
     ) {
         catsorange.reached = true
+        removeInhaler()
         document.querySelector('#bottom-right > h2').innerText = 'You lose a life!'
     } else if (
         player.x < catsblack.x + catsblack.width &&
@@ -173,29 +236,11 @@ const detectHit = () => {
         player.y + player.height > catsblack.y
     ) {
         catsblack.reached = true
+        removeInhaler()
+        // counter--
         document.querySelector('#bottom-right > h2').innerText = 'You lose a life!'
-    // } else if (
-    //     game.x < catsbrown.x + catsbrown.width &&
-    //     game.x + game.width > catsbrown.x &&
-    //     game.y < catsbrown.y + catsbrown.height &&
-    //     game.y + game.height > catsbrown.y
-    // ) {
-    //     game.reached = true
     }
 }
-
-//make the cats turn around when they hit the edge of the board
-//no idea what i'm doing here 
-// const turnAround = () => {
-//     if (
-//         catsbrown.x = game
-//     ) catsbrown.x -= 4
-// }
-
-// if (true) {
-//     catsbrown.x = game.width
-// }
-// let catsbrown.x -= 4
 
 
 
@@ -212,15 +257,16 @@ const gameLoop = () => {
     friendshouse.render()
     player.render()
     // setX()
+    // catsbrownDirectionX()
     catsbrown.render()
     catsorange.render()
     catsblack.render()
-    catsbrownMoveX()
+    catbrownMoveX()
+    catorangeMoveX()
+    catblackMoveY()
     // catsbrown.x += 4
-    // catsbrown.x -= 10
-    // catsbrown.x = game.width - catsbrown.height
-    catsorange.x -= 4
-    catsblack.y += 4
+    // catsorange.x -= 4
+    // catsblack.y += 4
     detectHit()
     if (friendshouse.reached) {
         stopGameLoop()
