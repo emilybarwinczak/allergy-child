@@ -1,21 +1,3 @@
-//making an allergy child game
-//the point of the game is to get AC to her friend's house unharmed
-//we will have a player (AC) and obstacles
-//the player (AC) can move around the canvas
-//the obstacles will move around the canvas randomly
-//AC needs to try and avoid the obstacles
-//if AC runs into an obstacle, they lose a life(inhaler) 
-//  //--> do I want them to have to move back to the start? 
-//AC gains a life back if they retrieve an inhaler or nebulizer
-//once AC gets to the friends house, you win the game
-
-//one class for allergy girl, the good items, the bad items, and the win condition
-//life bar represented by attributes on the 
-//this.healthPoints = 100
-//detectHit(thing) if it happens, deduct or add points etc.
-
-
-
 // we need to get our canvas, save it to a variable, so we can access it(and utilize it)
 const game = document.getElementById('canvas')
 // another thing we'll do here, is get the movement tracker
@@ -40,18 +22,10 @@ console.log('this should be an inhaler', inhalers)
 
 let catDirection = true 
 
-
-// let catX = 0
-// function setX () {
-//     catX = Math.floor(Math.random() * game.width)
-//     console.log(catX)
-//     return catX
-// }
-
 function catsbrownDirectionX () {
     } 
 function catbrownMoveX () {
-    if (catsbrown.x > 1087){
+    if (catsbrown.x > 1050){
         catDirection = false
     } else if (catsbrown.x < 0) {
         catDirection = true
@@ -66,11 +40,10 @@ function catbrownMoveX () {
     }
 }
 
-
 function catsorangeDirectionX () {
     } 
 function catorangeMoveX () {
-    if (catsorange.x > 1087){
+    if (catsorange.x > 1050){
         catDirection = false
     } else if (catsorange.x < 0) {
         catDirection = true
@@ -85,11 +58,10 @@ function catorangeMoveX () {
     }
 }
 
-
 function catsblackDirectionY () {
 } 
 function catblackMoveY () {
-    if (catsblack.y > 662){
+    if (catsblack.y > 650){
         catDirection = false
     } else if (catsblack.y < 0) {
         catDirection = true
@@ -103,6 +75,8 @@ function catblackMoveY () {
         // console.log('-')
     }
 }
+
+
 
 const crazyImg = new Image()
 crazyImg.src = ('https://i.imgur.com/47ArcEv.png')
@@ -133,17 +107,11 @@ function Crawler(url, x, y, width, height) {
 }
 
 let catsbrown = new Crawler (crazyImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 90, 100)
-let catsorange = new Crawler (flyingImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 100, 100)
-let catsblack = new Crawler (sittingImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 100, 100)
+let catsorange = new Crawler (flyingImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 80, 80)
+let catsblack = new Crawler (sittingImg, Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 80, 80)
 
-let player = new Crawler (ellieImg, 0, 580, 100, 100)
-let friendshouse = new Crawler(houseImg, 1005, 0, 140, 105)
-
-// let catsbrown = new Crawler (setX(), Math.floor(Math.random() * game.height), 'brown', 15, 15)
-// let catsbrown = new Crawler (Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'brown', 15, 15)
-// let catsorange = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'orange', 15, 15)
-// let catsblack = new Crawler(Math.floor(Math.random() * game.width), Math.floor(Math.random() * game.height), 'black', 15, 15)
-
+let player = new Crawler (ellieImg, 0, 470, 80, 80)
+let friendshouse = new Crawler(houseImg, 850, 0, 110, 75)
 
 
 let movementHandler = (e) => {
@@ -287,250 +255,3 @@ const gameLoop = () => {
 document.addEventListener('keydown', movementHandler)
 // the timing function will determine how and when our game animates
 let gameInterval = setInterval(gameLoop, 70)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let cats = new spawnObjects('brown', 15, 15)
-// console.log(cats)
-// function spawnObjects(color, width, height) {
-//     x = Math.floor(Math.random() * game.width)
-//     y = Math.floor(Math.random() * game.height)
-//     this.color = color
-//     this.width = width
-//     this.height = height
-    
-//     this.render = function () {
-//         ctx.fillStyle = this.color
-//         ctx.fillRect(x, y, this.width, this.height)
-//     }
-// }
-
-
-
-// function move() {
-//     const querySelector(cats);
-
-// }
-// setInterval() => {
-//     //want the object to move around here?
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-
-// const gw = game.width;
-// const gh = game.height;
-
-// const cats = [];
-// for (i = 0; i < 3; i++) {
-//     newCat();
-// }
-// drawAll();
-
-// const continueAnimating = true;
-// const lastTime = performance.now();
-// requestAnimationFrame(animate);
-// function newCat() {
-//     let r = 10 + Math.random() * 15;
-//     let x = Math.random() * (gw-2*r) + r;
-//     let y = Math.random() * (gh-2*r) + r;
-//     while (true) {
-//         let hit = 0;
-//         for (i = 0; i < cats.length; i++){
-//             const cat = cats[i];
-//             let dx = x - cat.x;
-//             let dy = y - cat.y;
-//             let rr = r + cat.radius;
-//             if (dx * dx + dy * dy <rr * rr) {
-//                 hit++;
-//             }
-//         }
-//         if (hit == 0) {
-//             break;
-//         }
-//     let x = Math.random() * (gw-2*r) + r;
-//     let y = Math.random() *(gh-2*r) + r;
-//     }
-//     cats.push({
-//         x: x,
-//         y: y,
-//         radius: r,
-//         color: randomColor(),
-//         countdown: 500 + Math.random() * 1000
-//     });
-// }
-// function animate(time) {
-//     if (continueAnimating) {
-//         requestAnimationFrame(animate);
-//     }
-//     var elapsed = time - lastTime;
-//     lastTime = time;
-//     var i = cats.length;
-//     while (--i >= 0) {
-//         var cat = cats[i];
-//         cat.countdown -= elapsed;
-//         if (cat.countdown < 0) {
-//             cats.splice(i, 1);
-//             newCat();
-//         }
-//     }
-//     // draw circles
-//     drawAll();
-// }
-
-// function drawAll() {
-//     ctx.clearRect(0, 0, cw, ch);
-//     for (var i = 0; i < cats.length; i++) {
-//         var cat = cats[i];
-//         ctx.beginPath();
-//         ctx.arc(cat.x, cat.y, cat.radius, 0, Math.PI * 2);
-//         ctx.closePath();
-//         ctx.fillStyle = cat.color;
-//         ctx.fill();
-//     }
-// }
-// function randomColor() {
-//     return ('#' + Math.floor(Math.random() * 16777215).toString(16));
-// }
-// $("#stop").click(function () {
-//     continueAnimating = false;
-// });
-
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// function cats() {
-//     this.x = Math.random() * (game.width - (game.width - game.width)) + (game.width - game.width);
-//     this.y = 0;
-//     this.vx = 5.5;
-//     this.vy = 1;
-//     this.radius = 5;
-//     this.color = 'brown';
-//     this.gravity = 1;
-//     this.gravitySpeed = 0;
-//     this.bounce = 1;
-//     this.ctx = game.getContext('2d');
-//     this.draw = function() {
-//       this.ctx.beginPath();
-//       this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-//       this.ctx.closePath();
-//       this.ctx.fillStyle = this.color;
-//       this.ctx.fill();
-//     }
-//     this.newPos = function() {
-//       this.gravitySpeed += this.gravity;
-//       this.x += this.vx;
-//       this.y += this.vy + this.gravitySpeed;
-//       this.hitBottom();
-//     }
-//     this.hitBottom = function() {
-//       var rockbottom = game.height - this.radius;
-//       if (this.y > rockbottom) {
-//         this.y = rockbottom;
-//         this.gravitySpeed = -(this.gravitySpeed / 1.5 * this.bounce);
-//       }
-//     }
-//   }
-  
-//   var ball = new cats();
-
-
-//   function drawf() {
-//     // ball.ctx.clearRect(0, 0, game.width, game.height);
-//     ball.draw();
-//     // console.log(ball);
-//     ball.newPos();
-//     raf = window.requestAnimationFrame(drawf);
-// }
-
-// // setInterval(drawf, 35000)
-//   game.addEventListener('keypress', function(e) {
-//     raf = window.requestAnimationFrame(drawf);
-//   });
-  
-//   ball.draw()
