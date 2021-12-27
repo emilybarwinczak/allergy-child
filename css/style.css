@@ -1,26 +1,26 @@
 body {
-    padding-top: 1em;
+    margin: 5px;
     text-align: center;
     background-color: rgba(219, 253, 253, 0.889);
-    /* background-size: cover; */
-    /* background-repeat: space; */
-    /* flex-direction: column; */
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Merriweather', serif;
 }
 
 #gameContainer {
   justify-content: center;
-  max-width: 75em;
-  max-height: 62em;
+  width: 70%;
+  height: 80%;
   border: 6px solid black;
-  background-color: rgba(192, 224, 250, 0.808);
-  /* margin: 0 auto; */
+  background-color: rgba(203, 238, 238, 0.889);
+  margin: 0;
   padding-top: 25px;
   display: grid;
   grid-gap: 1em;
-  grid-template-rows: .25fr .5fr .25fr;
-  grid-template-columns: .25fr .5fr .25fr;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
   grid-template-areas: "top-left top-left top-right"
                         "game game game"
                         "bottom-left bottom-right bottom-right";
@@ -29,7 +29,8 @@ body {
   #top-left, #top-right, #bottom-left, #bottom-right {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: space-around;
+    text-align: center;
     background-color: white;
     border: 6px solid black;
   }
@@ -39,19 +40,26 @@ body {
     
     #top-right {
       grid-area: top-right;
-      background-color: white;
+      padding-top: 5%;
+      font-size: x-large;
     }
 
 main {
   grid-area: game;
+  position: center;
+  align-items: center;
 }
 
 canvas {
     background-image: url('https://thumbs.dreamstime.com/b/print-202751156.jpg');
     background-position: center;
+    background-size: cover;
+    align-items: center;
+    /* margin: auto; */
     position: center;
+    justify-self: center;
     width: 950px;
-    height: 550px;
+    height: 600px;
     border: 6px solid black;
 }
 
@@ -59,24 +67,23 @@ canvas {
 
 #bottom-left {
   grid-area: bottom-left;
+  margin-bottom: auto;
+  font-size: large;
 }
 
 #bottom-right {
   grid-area: bottom-right;
+  margin-bottom: 5%;
+  font-size: 15.5px;
 }
 
-#startGame{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-  background-image: url('https://images.medicaldaily.com/sites/medicaldaily.com/files/styles/full/public/2020/10/01/child-sneezing.jpg');
-  color: gray
-}
-
-#gameName {
-  padding: 14px;
-  justify-content: center;
+#startGame, #gameOver, #gameWon {
+  position: center;
   text-align: center;
+  padding-top: 20px;
+  width: 950px;
+  height: 650px;
+  z-index: 100;
+  background-image: url('https://images.theconversation.com/files/223741/original/file-20180619-126556-15boyhk.jpg?ixlib=rb-1.1.0&rect=18%2C505%2C4194%2C2097&q=45&auto=format&w=1356&h=668&fit=crop');
+  color: rgb(0, 0, 0)
 }

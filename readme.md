@@ -22,5 +22,3 @@ https://emilybarwinczak.github.io/allergy-child/
 - Possibly have a safe house where you can hide from incoming obstacles
 - Create a health benefit (nebulizer, I know, hardcore) that gives extra health back to the player (more so than just an inhaler)
 - Create another level?
-
-

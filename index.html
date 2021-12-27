@@ -5,45 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>Allergy Child Game</title>
 </head>
 
 <body>
-    <div id="gameName"><h1>Allergy Child</h1></div>
+    <!-- <div id="gameName"><h1>Allergy Child</h1></div> -->
     <div id="gameContainer">
         <main>
             <!-- <canvas id="canvas" width="400" height="150"></canvas> -->
             <canvas id="canvas" style="display: none"></canvas>
             <div id="startGame" style="display: block">
                 <h2>Oh no... not you again!</h2>
-                <h3>Allergy Child is back and she is bored as ever!<br>She wants to go over to her friend's house but
-                    she's
-                    always <br>running into these pesky cats on her way over.<br>The goal of the game is to get Allergy
-                    Child over to <br>her friend's house safely and without bumping into any cats.</h3>
+                <h3>Allergy Child is back and she is bored as ever! She wants to go<br>
+                    over to her friend's house but she's always running into these <br>
+                    pesky cats on her way over. The goal of the game is to get Allergy<br>
+                    Child over to her friend's house safely and without bumping into any cats.<br></h3>
                 <h2>Directions to play the game:</h2>
-                <h3>Use the WASD keys to move Allergy Child around the board.</h3>
+                <h3>You only have 3 lives. If you run into a cat 3 times, you lose the game!<br>
+                    Use the WASD keys to move Allergy Child around the board.</h3>
                 <button id="startButton" type="button">Start Game</button>
+            </div>
+            <div id = "gameWon" style = "display: none">
+                <h2>Winner!!!</h2>
+                <button id = "playAgainButton" type = "button">Play Again!</button>
+            </div>
+            <div id = "gameOver" style = "display: none">
+                <h2>Game Over!!!</h2>
+                <button id = "resetButton" type = "button">Reset Game!</button>
             </div>
         </main>
         <aside id="top-left"><h2>Transport Allergy Child Safely!</h2></aside>
-        <aside id="top-right">
-            <h2>
-                <img class="inhaler" id="inh1"
-                    src="https://atlas-content1-cdn.pixelsquid.com/assets_v2/11/1151536164130265080/jpeg-600/G07.jpg"
-                    width="60" height="60">
-                <img class="inhaler" id="inh2"
-                    src="https://atlas-content1-cdn.pixelsquid.com/assets_v2/11/1151536164130265080/jpeg-600/G07.jpg"
-                    width="60" height="60">
-                <img class="inhaler" id="inh3"
-                    src="https://atlas-content1-cdn.pixelsquid.com/assets_v2/11/1151536164130265080/jpeg-600/G07.jpg"
-                    width="60" height="60">
-            </h2>
-        </aside>
-        <aside id="bottom-left"><h2 id="movement"></h2></aside>
-        <aside id="bottom-right"><h2 id="status">
+        <aside id="top-right"><h2>Lives left: </h2></aside>
+        <aside id="bottom-left"><h3 id="movement"></h3></aside>
+        <aside id="bottom-right"><h3 id="status">
             <p><em>W</em> = Up&emsp;<em>S</em> = Down&emsp;<em>A</em> = Left&emsp;<em>D</em> = Right
-        </h2></aside>
+        </h3></aside>
     </div>
     <script src="js/app.js"></script>
 </body>
